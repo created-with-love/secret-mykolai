@@ -1,0 +1,18 @@
+{
+  "name": "secret-mykolai",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "db:init:local": "wrangler d1 execute secret-mykolai --local --file=schema.sql",
+    "db:init:remote": "wrangler d1 execute secret-mykolai --remote --file=schema.sql",
+    "deploy": "wrangler deploy",
+    "status": "node scripts/admin.mjs status",
+    "draw": "node scripts/admin.mjs draw",
+    "redraw": "node scripts/admin.mjs redraw",
+    "reset-draw": "node scripts/admin.mjs reset"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

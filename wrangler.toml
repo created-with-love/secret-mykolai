@@ -1,0 +1,17 @@
+name = "secret-mykolai"
+main = "src/worker.js"
+compatibility_date = "2025-09-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[vars]
+# Скільки учасників очікуємо (3 пари = 6)
+EXPECTED_PARTICIPANTS = "6"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "secret-mykolai"
+# Замініть на id, який видасть `npx wrangler d1 create secret-mykolai`
+database_id = "c7793b76-07be-4cd4-8875-82a79d932e10"
