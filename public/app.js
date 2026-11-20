@@ -140,7 +140,7 @@
           </label>
           <label class="field"><span>Твоя половинка ❤️</span>
             <select name="partnerId" ${drawnAt ? 'disabled' : ''}>
-              <option value="">— ще не зареєструвалась(вся) —</option>
+              <option value="">${others.length ? '— обери свою половинку —' : '— поки нікого немає —'}</option>
               ${options}
             </select>
             <small>${drawnAt ? 'Жеребкування вже відбулося, пару змінити не можна.' : 'Ви не зможете випасти одне одному. Якщо половинки ще немає в списку — збережи профіль і зайди пізніше. Коли хтось із пари обирає іншого, пара встановлюється для обох.'}</small>
@@ -161,6 +161,7 @@
       </div>
       ${first ? '<div class="actions" style="justify-content:center"><button class="btn ghost small" id="logoutBtn">Вийти</button></div>' : ''}`;
 
+    const form = document.getElementById('profileForm');
     const rows = document.getElementById('linkRows');
     const addRow = (l = { title: '', url: '' }) => {
       const r = document.createElement('div');
@@ -173,13 +174,16 @@
       rows.appendChild(r);
     };
     links.forEach(addRow);
+    const ta = form.querySelector('textarea');
+    const grow = () => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight + 2, 480) + 'px'; };
+    ta.addEventListener('input', grow);
+    requestAnimationFrame(grow);
     document.getElementById('addLink').onclick = () => addRow();
     const cancel = document.getElementById('cancelEdit');
     if (cancel) cancel.onclick = () => { editing = false; renderDashboard(); };
     const lo = document.getElementById('logoutBtn');
     if (lo) lo.onclick = logout;
 
-    const form = document.getElementById('profileForm');
     form.onsubmit = (e) => {
       e.preventDefault();
       const fd = new FormData(form);
@@ -206,7 +210,7 @@
     return `<ul class="links">${links
       .map(
         (l) =>
-          `<li><a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">🔗 ${esc(l.title || host(l.url) || l.url)}<span class="host">${esc(host(l.url))}</span></a></li>`
+          `<li><a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span class="li-icon">🔗</span><span class="li-text"><span class="li-title">${esc(l.title || host(l.url) || l.url)}</span>${l.title && host(l.url) ? `<span class="host">${esc(host(l.url))}</span>` : ''}</span><span class="li-arrow">↗</span></a></li>`
       )
       .join('')}</ul>`;
   }
@@ -270,8 +274,8 @@
 
     view.innerHTML = `
       <div class="card">
-        <div class="row-between">
-          <div>
+        <div class="row-between nowrap">
+          <div class="grow">
             <p class="hello">Привіт, ${esc(me.displayName)}! 👋</p>
             <p class="muted" style="margin:2px 0 0">${partner ? `Половинка: ${esc(partner.name || '…')} ❤️` : '⚠️ Половинку не вказано'}</p>
           </div>
