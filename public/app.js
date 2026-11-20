@@ -241,12 +241,13 @@
               <div>
                 <div class="label">Ти — Таємний Миколай для</div>
                 <div class="who">${esc(assignment.name)}</div>
-                <div class="label">🤫 Тільки нікому не кажи!</div>
+                <div class="label">🤫 Тільки нікому не кажи!<br/>Вручаємо 5 грудня 🎄</div>
               </div>
             </div>
           </div>
         </div>
         <div class="card" id="giftInfo" hidden>
+          <p class="meet" style="margin-top:0">📅 Зустрічаємось <strong>5 грудня</strong> — не забудь подарунок!</p>
           <h3>🎄 Що порадує ${esc(assignment.name)}</h3>
           ${wishesHtml(assignment.wishes)}
           <h3>🛍️ Вішліст</h3>
@@ -259,6 +260,7 @@
             <div class="big">🎲</div>
             <h2>Жеребкування ще попереду</h2>
             <p class="sub">Щойно всі зареєструються, ми запустимо розподіл — і тут з'явиться твій отримувач подарунка.</p>
+            <p class="meet">📅 Зустрічаємось <strong>5 грудня</strong> — подарунки вручаємо разом!</p>
           </div>
           <div class="row-between"><strong>Готові учасники</strong><span class="muted">${ready} / ${expected}</span></div>
           <div class="progress"><div style="width:${Math.min(100, (ready / expected) * 100)}%"></div></div>

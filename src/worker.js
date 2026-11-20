@@ -104,7 +104,7 @@ function requireAdmin(req, env) {
 }
 
 const normUsername = (u) => String(u || '').trim().toLowerCase();
-const expected = (env) => parseInt(env.EXPECTED_PARTICIPANTS || '6', 10);
+const expected = (env) => parseInt(env.EXPECTED_PARTICIPANTS || '8', 10);
 
 async function isDrawn(env) {
   const row = await env.DB.prepare("SELECT value FROM meta WHERE key = 'drawn_at'").first();

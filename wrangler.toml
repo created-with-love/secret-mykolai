@@ -7,8 +7,8 @@ directory = "./public"
 binding = "ASSETS"
 
 [vars]
-# Скільки учасників очікуємо (3 пари = 6)
-EXPECTED_PARTICIPANTS = "6"
+# Скільки учасників очікуємо (4 пари = 8)
+EXPECTED_PARTICIPANTS = "8"
 
 [[d1_databases]]
 binding = "DB"

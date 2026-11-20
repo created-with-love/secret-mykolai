@@ -37,7 +37,7 @@ npm run deploy                              # виведе адресу сайт
 
 | Що | Де |
 |---|---|
-| Кількість учасників (за замовчуванням 6 = 3 пари) | `EXPECTED_PARTICIPANTS` у `wrangler.toml` |
+| Кількість учасників (за замовчуванням 8 = 4 пари) | `EXPECTED_PARTICIPANTS` у `wrangler.toml` |
 | Код запрошення | секрет `INVITE_CODE` |
 | Ключ організатора | секрет `ADMIN_KEY` |
 | Назва, дата свята, тексти | `public/index.html`, `public/app.js` |
